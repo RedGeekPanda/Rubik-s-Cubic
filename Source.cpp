@@ -1,4 +1,4 @@
-#include<GL\freeglut.h>
+#include"includes\h\GL\freeglut.h"
 #include<iostream>
 #include<cmath>
 #include<ctime>
