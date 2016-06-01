@@ -77,7 +77,7 @@
       <AdditionalIncludeDirectories>D:\My Libraries\Documents\Visual Studio 2015\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>D:\My Libraries\Documents\Visual Studio 2015\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\My Libraries\Documents\Visual Studio 2015\Projects\OP\Rubik%27s Cubic\includes\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -91,6 +91,8 @@
     <Link>
       <SubSystem>NotSet</SubSystem>
       <AdditionalLibraryDirectories>D:\My Libraries\Documents\Visual Studio 2015\Projects\OP\Rubik%27s Cubic\includes\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AssemblyLinkResource>
+      </AssemblyLinkResource>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -105,7 +107,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>D:\My Libraries\Documents\Visual Studio 2015\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\My Libraries\Documents\Visual Studio 2015\Projects\OP\Rubik%27s Cubic\includes\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -123,6 +125,8 @@
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>NotSet</SubSystem>
       <AdditionalLibraryDirectories>D:\My Libraries\Documents\Visual Studio 2015\Projects\OP\Rubik%27s Cubic\includes\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AssemblyLinkResource>
+      </AssemblyLinkResource>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
