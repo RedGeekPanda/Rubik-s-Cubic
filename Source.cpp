@@ -7,9 +7,9 @@
 CONST GLfloat DEF_ASPECT_RATIO = 16.0f / 9.0f;
 CONST GLint DEF_WINDOW_WIDTH = 900, DEF_WINDOW_HEIGHT = GLint(DEF_WINDOW_WIDTH / DEF_ASPECT_RATIO);
 GLint curr_window_width, curr_window_height;
-bool key_32_press = false;
 CONST GLint FPS = 0;
 CONST GLfloat PI = acos(-1.0f);
+bool key_32_press = false;
 GLfloat cubic_rubiks_size = 240;
 GLfloat interspace = 4.0f;
 GLfloat cubic_size = (cubic_rubiks_size - interspace * 2) / 3;
@@ -336,21 +336,24 @@ void onDisplay(void)
 {
 	//background drawing
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glPushMatrix();
+	glTranslatef(0.0f, 0.0f, -cubic_rubiks_size * 2.5f);
 	glDisable(GL_DEPTH_TEST);
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	glBegin(GL_POLYGON);
-	glColor3ub(255, 255, 255);
-	glVertex2f(0.0f, 0.0f);
-	glColor3ub(0, 0, 0);
-	for(GLfloat degrees = 0.0f, theta; degrees <= 360.0f; degrees += 6.0f)
 	{
-		theta = convertDegToRad(degrees);
-		glVertex2f(DEF_WINDOW_WIDTH * cos(theta) + 0.0f, DEF_WINDOW_HEIGHT * sin(theta) + 0.0f);
+		glColor3ub(255, 255, 255);
+		glVertex2f(0.0f, 0.0f);
+		glColor3ub(0, 0, 0);
+		for(GLfloat degrees = 0.0f, theta; degrees <= 360.0f; degrees += 6.0f)
+		{
+			theta = convertDegToRad(degrees);
+			glVertex2f(DEF_WINDOW_WIDTH * cos(theta) + 0.0f, DEF_WINDOW_HEIGHT * sin(theta) + 0.0f);
+		}
 	}
 	glEnd();
-	//cubics drawing
 	glEnable(GL_DEPTH_TEST);
-	glPushMatrix();
+	//cubics drawing
 	glRotatef(cR_y_angle, 0, 1, 0);
 	glRotatef(cR_x_angle, 1, 0, 0);
 	glRotatef(cR_z_angle, 0, 0, 1);
@@ -366,20 +369,18 @@ void onReshape(GLsizei w, GLsizei h)
 	glViewport(0, 0, w, h);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	GLfloat aspectRatio = (GLfloat)w / (GLfloat)h / DEF_ASPECT_RATIO;;
-	if(aspectRatio <= 1)
-	{
-		curr_window_height = GLint(DEF_WINDOW_HEIGHT / aspectRatio);
-		glOrtho(-DEF_WINDOW_WIDTH / 2, DEF_WINDOW_WIDTH / 2, -curr_window_height / 2, curr_window_height / 2, -cubic_rubiks_size, cubic_rubiks_size);
-		return;
-	}
-	else
-	{
-		curr_window_width = GLint(DEF_WINDOW_WIDTH * aspectRatio);
-		glOrtho(-curr_window_width / 2, curr_window_width / 2, -DEF_WINDOW_HEIGHT / 2, DEF_WINDOW_HEIGHT / 2, -cubic_rubiks_size, cubic_rubiks_size);
-		return;
-	}
-
+	//GLfloat aspectRatio = (GLfloat)w / (GLfloat)h / DEF_ASPECT_RATIO;;
+	//if(aspectRatio <= 1)
+	//{
+	//	curr_window_height = GLint(DEF_WINDOW_HEIGHT / aspectRatio);
+	//	glOrtho(-DEF_WINDOW_WIDTH / 2, DEF_WINDOW_WIDTH / 2, -curr_window_height / 2, curr_window_height / 2, -cubic_rubiks_size, cubic_rubiks_size);
+	//}
+	//else
+	//{
+	//	curr_window_width = GLint(DEF_WINDOW_WIDTH * aspectRatio);
+	//	glOrtho(-curr_window_width / 2, curr_window_width / 2, -DEF_WINDOW_HEIGHT / 2, DEF_WINDOW_HEIGHT / 2, -cubic_rubiks_size, cubic_rubiks_size);
+	//}
+	gluPerspective(45, (GLfloat)w / (GLfloat)h, 0.1f, cubic_rubiks_size * 4);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 }
